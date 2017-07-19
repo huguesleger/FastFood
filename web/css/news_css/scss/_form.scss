@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 juil. 2017, 13:50:43
+    Author     : hugues
+*/
+
+
+
+/*------------form burger--------------*/
+
+#LabelPrice{
+    display: none;
+}
+
+.visible {
+ display: inherit !important;   
+}
+
+//////////////////////
+//////////////////////
+
+/*------------overide-template-admin------------*/
+
+.form-control {
+resize: none;
+}
+
+.checkbox label, .radio label {
+    padding-left: 0px;
+}
+
+#blah {
+    display: none;
+}
+
+.info-publish {
+    color: red;
+    font-size: 11px;
+    
+}
+
+/*input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+}
+
+input[type=checkbox] {
+    -border-radius: 0;
+    height: 30px;
+    width: 30px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+input[type="checkbox"]:checked {
+
+  &:before {
+    font-family: FontAwesome;
+    content: '\f00c';
+    display: block;
+    color: grey;
+    font-size: 23px;
+    padding-left: 2px;
+    position: absolute;
+  }
+}*/
