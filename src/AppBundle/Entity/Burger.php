@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -41,7 +42,7 @@ class Burger
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
 
@@ -78,7 +79,20 @@ class Burger
      */
     private $categorie;
     
-   
+    
+   /**
+    *
+    * @var DateTime
+    * @ORM\Column(name="date", type="datetime")
+    */
+    private $date;
+    
+    
+    
+    public function __construct()
+{
+    $this->date = new DateTime();
+}
        
     
     /**
@@ -241,10 +255,21 @@ class Burger
         $this->categorie = $categorie;
     }
 
-        
+    
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function setDate(DateTime $date) {
+        $this->date = $date;
+    }
+
+            
     
       public function __toString() {
         return $this->getName();
     }
+    
+    
 }
 

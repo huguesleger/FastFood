@@ -63,9 +63,21 @@ and open the template in the editor.
     Created on : 15 juil. 2017, 13:17:50
     Author     : hugues
 */
-.icon-burger {
-  width: 25px;
-  margin-top: -8px;
-  margin-left: -5px; }
+/*--------- titre name product ---------*/
+.title_add {
+  margin-left: 10px; }
+
+/*----------------- overide avatar product ------------*/
+ul.messages li img.avatar, img.avatar {
+  height: 32px;
+  width: 32px;
+  float: left;
+  display: inline-block;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 0;
+  background: none;
+  border: none; }
 
 /*# sourceMappingURL=main.css.map */

@@ -42,6 +42,7 @@ $(document).ready(function(){
       var template = $container.attr('data-prototype')
         .replace(/__name__label__/g, 'n°' + (index+1))
         .replace(/__name__/g,        index)
+        
       ;
 
       var $prototype = $(template);
@@ -53,9 +54,11 @@ $(document).ready(function(){
 
     function addDeleteLink($prototype) {
       var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
-
+  
+ 
+  if (index > 0) {  // ci y'a qu'un seul ingredient je n'affiche pas le btn supprimer
       $prototype.append($deleteLink);
-
+  }
       $deleteLink.click(function(e) {
         $prototype.remove();
 
@@ -67,10 +70,9 @@ $(document).ready(function(){
 /////////////////////////////////////////////////////
 ////////////////////////////////////////////////////
 
-
+    ////////////// preload image dans form//////////////:
     /////////////////////////////////////////////////////
     ////////////////////////////////////////////////////
-
 
 
  function readURL(input) {
@@ -93,5 +95,13 @@ $(document).ready(function(){
         
     });
     
-           
+    /////////////////////////////////////////////////////
+////////////////////////////////////////////////////
+
+
+
+
+
+
+
 });

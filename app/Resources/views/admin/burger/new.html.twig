@@ -1,11 +1,11 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
      {% block content %}
-    <h1>Burger creation</h1>
-
+    <h3>Burger creation</h3>
     {{ form_start(form) }}
+     {{ form_errors(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Create"/>
          <div class="col-sm-10">
                     {{ form_row(form.ingredient) }}
             <a href="#" id="add_category" class="btn bg-purple btn-flat">Ajouter un ingrédient</a>
@@ -22,13 +22,18 @@
         <div class="form-group">
          {{form_row(form.categorie,{'attr':{'class':('form-control')}})}}
         </div>
+        
+        
     {{ form_end(form) }}
 
     <ul>
         <li>
             <a href="{{ path('burger_index') }}">Back to the list</a>
         </li>
-    </ul>
+    </ul
+    
+    
+    
 {% endblock %}
 
 {% block scriptForm %}

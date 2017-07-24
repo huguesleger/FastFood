@@ -39,11 +39,17 @@ class CategorieController extends Controller
      */
     public function newAction(Request $request)
     {
+        
         $categorie = new Categorie();
         $form = $this->createForm('AppBundle\Form\CategorieType', $categorie);
         $form->handleRequest($request);
-
+        
+ 
+        
         if ($form->isSubmitted() && $form->isValid()) {
+            
+          
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($categorie);
             $em->flush();

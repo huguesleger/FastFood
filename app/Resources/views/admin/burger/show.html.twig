@@ -1,8 +1,29 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
   {% block content %}
-    <h1>Burger</h1>
+{#
+ {% if burger.publish == null %}
+     {% for message in app.flashes('brouillon') %}
+     <div id="no_publish">
+     <div class="ui-pnotify col-sm-2">
+          <div class="alert ui-pnotify-container alert-warning ui-pnotify-shadow">
+              <div class="ui-pnotify-closer">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+              </div>
+              <div class="ui-pnotify-icon">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+              </div>
+             <h4 class="ui-pnotify-title">Info {{ burger.name }}</h4>
+              <div class="ui-pnotify-text">{{ message }}</div>   
+          </div>    
+      </div>
+     </div>
+     {% endfor %}
+ {% else %}
+{% endif %}#}
 
+    <h1>Burger</h1>
+         
     <table>
         <tbody>
             <tr>
@@ -53,4 +74,7 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+{% block scriptForm %}
+    <script type="text/javascript" src="{{asset('js/listes_burger.js')}}"></script>
 {% endblock %}

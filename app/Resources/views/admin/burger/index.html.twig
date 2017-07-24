@@ -1,53 +1,147 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
   {% block content %}
-    <h1>Burgers list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Thumbnail</th>
-                <th>ingredient</th>
-                <th>Publish</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for burger in burgers %}
-            <tr>
-                <td><a href="{{ path('burger_show', { 'id': burger.id }) }}">{{ burger.id }}</a></td>
-                <td>{{ burger.name }}</td>
-                <td>{{ burger.description }}</td>
-                <td>{{ burger.price }}</td>
-               <div class="col-md-2">
-                <img src="{{asset('uploads/img/')~burger.thumbnail}}" class="img-responsive"/>
+{#<div class="row tile_count">
+            
+          <div class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+            <div class="left"></div>
+            <div class="right">
+                
+              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
+               {% for burger in burgers %}
+              {% if burger.categorie == 'burger steak' %}
+               {% set counter = ( counter | default(0) ) + 1 %}
+              <div class="count">{{ counter }}</div>
+              
+              {% endif %}
+                  {% endfor %}
+              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            </div>
+          </div>
+                  
+          </div>#}
+                
+           {% for message in app.flashes('confirm') %}
+     <div id="confirm">
+     <div class="ui-pnotify col-sm-2">
+          <div class="alert ui-pnotify-container alert-success ui-pnotify-shadow">
+              <div class="ui-pnotify-closer">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+              </div>
+              <div class="ui-pnotify-icon">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+              </div>
+             <h4 class="ui-pnotify-title">Info</h4>
+              <div class="ui-pnotify-text">{{ message }}</div>   
+          </div>    
+      </div>
+     </div>
+    {% endfor %}
+    
+        
+      {% for message in app.flashes('delete') %}
+     <div id="delete">
+     <div class="ui-pnotify col-sm-2">
+          <div class="alert ui-pnotify-container alert-success ui-pnotify-shadow">
+              <div class="ui-pnotify-closer">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+              </div>
+              <div class="ui-pnotify-icon">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+              </div>
+             <h4 class="ui-pnotify-title">Info</h4>
+              <div class="ui-pnotify-text">{{ message }}</div>   
+          </div>    
+      </div>
+     </div>
+     {% endfor %}
+        
+      
+       <div class="">
+          <div class="page-title">
+            <div class="title_left">
+                <h3>Burger<a class="btn btn-dark btn-xs title_add" href="{{ path('burger_new') }}">Ajouter</a></h3>       
+            </div>
+
+            {#<div class="title_right">
+              <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
                 </div>
-                 {% for burger in burger.ingredient %}
-                    <td>{{ burger.name }}</td>
-                    {% endfor %}
-                <td>{% if burger.publish %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('burger_show', { 'id': burger.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('burger_edit', { 'id': burger.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+              </div>
+            </div>#}
+          </div>
+          <div class="clearfix"></div>
 
-    <ul>
-        <li>
-            <a href="{{ path('burger_new') }}">Create a new burger</a>
-        </li>
-    </ul>
+
+          
+                <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Mes Burgers</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                 
+                  <table id="datatable" class="table table-striped projects">
+                    <thead>
+                      <tr>
+                        <th style="width: 1%">#</th>
+                        <th style="width: 12%">Categorie</th>
+                        <th style="width: 20%">Nom</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th style="width: 20%">Actions</th>
+                      </tr>
+                    </thead>
+
+
+                    <tbody>
+                        {% for burger in burgers %}
+                      <tr>  
+                        <td> {% set counter = ( counter | default(0) ) + 1 %}
+                            <div id="count-burger"><small> {{ counter }}</div></td>
+                        <td> <ul class="list-inline">
+                            <li>
+                              {% if burger.categorie == 'burger steak' %}<img src="{{asset('image/food/steak.png')}}" class="avatar" alt="Avatar">
+                              {% elseif burger.categorie == 'burger chicken'%}<img src="{{asset('image/food/chicken-1.png')}}" class="avatar" alt="Avatar">
+                              {% elseif burger.categorie == 'burger vegetable'%}<img src="{{asset('image/food/lettuce.png')}}" class="avatar" alt="Avatar">
+                              {% elseif burger.categorie == 'burger fish'%}<img src="{{asset('image/food/fish.png')}}" class="avatar" alt="Avatar">
+                              {% elseif burger.categorie == null %}<img src="{{asset('image/food/question.png')}}" class="avatar" alt="Avatar">    
+                              {% endif %}
+                            </li>
+                            <li><small>{% if burger.categorie == null %}sans catégorie{% else %}{{ burger.categorie }}{% endif %}</small></li>
+                          </ul></td>
+                        <td><a>{{ burger.name }}</a>
+                          <br />
+                          <small>Créer le {{ burger.date|date ('j/m/y à H:i:s') }}</small></td>
+                        <td>{{ burger.description }}</td>
+                        <td> {% if burger.publish %}<span type="button" class="label label-success">En ligne</span>{% else %}<span class="label label-warning">Brouillon</span>{% endif %}</td>
+                        <td><a href="{{ path('burger_show', { 'id': burger.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                          <a href="{{ path('burger_edit', { 'id': burger.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                          <a href="{{ path('delete', { 'id': burger.id }) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                          {% if burger.categorie == null %}<a href="{{ path('categorie_new') }}" class="btn btn-dark btn-xs"><i class="fa fa-pencil"></i> Categorie </a>{% else %}{% endif %}</td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+                </div>
+                    
+                   </div>                
+{% endblock %}
+
+{% block scriptForm %}
+    <script type="text/javascript" src="{{asset('js/listes_burger.js')}}"></script>
+
 {% endblock %}

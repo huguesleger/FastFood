@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -26,12 +27,16 @@ class BurgerController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $burgers = $em->getRepository('AppBundle:Burger')->findAll();
-
+       
+        
+        
         return $this->render('admin/burger/index.html.twig', array(
             'burgers' => $burgers,
+            new JsonResponse($burgers)
         ));
+         
+                
     }
 
     /**
@@ -43,23 +48,34 @@ class BurgerController extends Controller
     public function newAction(Request $request)
     {
         $burger = new Burger();
+        
+      
+        
         $form = $this->createForm('AppBundle\Form\BurgerType', $burger);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
              $nomDuFichier = md5(uniqid()).".".$burger->getThumbnail()->getClientOriginalExtension();
             $burger->getThumbnail()->move('uploads/img', $nomDuFichier);
             $burger->setThumbnail($nomDuFichier);
             
+            $this->addFlash(
+        'confirm',
+            'Votre burger est bien créer'
+        );
+           
+            
+         
             $em = $this->getDoctrine()->getManager();
+           
             $em->persist($burger);
             $em->flush();
 
-            return $this->redirectToRoute('burger_show', array('id' => $burger->getId()));
+            return $this->redirectToRoute('burger_index', array('id' => $burger->getId()));
         }
 
         return $this->render('admin/burger/new.html.twig', array(
             'burger' => $burger,
+           
             'form' => $form->createView(),
         ));
     }
@@ -72,6 +88,13 @@ class BurgerController extends Controller
      */
     public function showAction(Burger $burger)
     {
+        
+             $this->addFlash(
+        'brouillon',
+            'Votre burger est en statut brouillon'
+        );
+        
+         
         $deleteForm = $this->createDeleteForm($burger);
 
         return $this->render('admin/burger/show.html.twig', array(
@@ -96,6 +119,12 @@ class BurgerController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+             $this->addFlash(
+            'maj',
+            'Changement(s)sauvegardé(s)'
+        );
+            
             $imagesNew = $em->find('AppBundle:Burger', $id);
             $f = $this->createForm(BurgerType::class, $imagesNew);
             
@@ -133,6 +162,7 @@ class BurgerController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
             $em->remove($burger);
             $em->flush();
@@ -150,10 +180,39 @@ class BurgerController extends Controller
      */
     private function createDeleteForm(Burger $burger)
     {
+        
+       
+        
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('burger_delete', array('id' => $burger->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
+    
+    
+    /*supprime fiche burger dans la liste de burger*/
+    
+   /**
+    *@Route("/{id}/delete", name="delete")
+    */
+    public function deleteBurger($id) {
+       
+        $em = $this->getDoctrine()->getManager();
+        $burger = $em->find('AppBundle:Burger', $id);
+          $this->addFlash(
+        'delete',
+            'Votre burger est bien supprimer'
+        );
+        $em->remove($burger);
+        $em->flush();
+        
+       return $this->redirectToRoute('burger_index');
+    }
+    
+     
+    
+
+
+    
 }

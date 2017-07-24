@@ -6,26 +6,82 @@
         {% block stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
          <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap.min.css')}}"/>
-         <link rel="stylesheet" type="text/css" href="{{asset('vendor/AdminLte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}"/>
-         <link rel="stylesheet" type="text/css" href="{{asset('vendor/AdminLte/bower_components/font-awesome/css/font-awesome.min.css')}}"/>
-         <link rel="stylesheet" type="text/css" href="{{asset('vendor/AdminLte/bower_components/Ionicons/css/ionicons.min.css')}}"/>
-         <link rel="stylesheet" type="text/css" href="{{asset('vendor/AdminLte/dist/css/AdminLTE.min.css')}}"/>
-         <link rel="stylesheet" type="text/css" href="{{asset('vendor/AdminLte/dist/css/skins/skin-red.min.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('css/font-awesome.min.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/css/custom.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/css/maps/jquery-jvectormap-2.0.3.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/css/icheck/flat/green.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/css/floatexamples.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/css/switchery/switchery.min.css')}}"/>
+        
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/js/datatables/jquery.dataTables.min.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/js/datatables/buttons.bootstrap.min.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/js/datatables/fixedHeader.bootstrap.min.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/js/datatables/responsive.bootstrap.min.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('vendor/gentelella/production/js/datatables/scroller.bootstrap.min.css')}}"/>
+
+        
          <link rel="stylesheet" type="text/css" href="{{asset('css/news_css/main.css')}}"/>
-         <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
          {% endblock %}
     </head>
-    <body class="hold-transition skin-red sidebar-mini">
+    <body class="nav-md">
+        <div class="container body">
+        <div class="main_container">
         {% block body %}
              {% block backoffice %}{% endblock %}
         {% endblock %}
-         
+        </div>
+        </div>
         {% block javascripts %}
-        <script type="text/javascript" src="{{asset('vendor/AdminLte/bower_components/jquery/dist/jquery.min.js')}}"></script>
-         <script type="text/javascript" src="{{asset('vendor/AdminLte/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-            <script type="text/javascript" src="{{asset('vendor/AdminLte/dist/js/adminlte.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/jquery.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/nprogress.js')}}"></script>
+        
+
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/progressbar/bootstrap-progressbar.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/nicescroll/jquery.nicescroll.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/icheck/icheck.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/moment/moment.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datepicker/daterangepicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/chartjs/chart.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.pie.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.orderBars.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.time.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/date.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.spline.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.stack.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/curvedLines.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/flot/jquery.flot.resize.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/maps/jquery-jvectormap-2.0.3.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/maps/gdp-data.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/maps/jquery-jvectormap-world-mill-en.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/maps/jquery-jvectormap-us-aea-en.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/switchery/switchery.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/notify/pnotify.core.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/notify/pnotify.buttons.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/notify/pnotify.nonblock.js')}}"></script>
+        
+         <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/jquery.dataTables.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.bootstrap.js')}}"></script> 
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.buttons.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/buttons.bootstrap.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/jszip.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/pdfmake.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/vfs_fonts.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/buttons.html5.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/buttons.print.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.fixedHeader.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.keyTable.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.responsive.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/responsive.bootstrap.min.js')}}"></script>    
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/datatables/dataTables.scroller.min.js')}}"></script>  
+        
+        <script type="text/javascript" src="{{asset('vendor/gentelella/production/js/custom.js')}}"></script>
+        
          
+        
+        
         {% endblock %}
         {% block scriptForm %}
              {% endblock %}
