@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function(){
 
-
-////////////////////////
 //////////notification form/////////////////
-
+$(document).ready(function(){
+    
+    
 $(function(){
 //$('#no_publish').fadeIn('slow').delay(2000).fadeOut('slow');
 $('#confirm').fadeIn('slow').delay(2000).fadeOut('slow');
@@ -17,7 +16,8 @@ $('#delete').fadeIn('slow').delay(2000).fadeOut('slow');
 $('#maj_post').fadeIn('slow').delay(3500).fadeOut('slow');
 });
 
-
+///////////////////////////////////////
+///////////////////////////////////////
 
 ////////////////////////liste burger////////////////
 $(function() { 
@@ -37,4 +37,8 @@ $(function() {
  
         });
  
+///////////////////////////////////////
+///////////////////////////////////////
+
+
 });

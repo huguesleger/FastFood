@@ -1,0 +1,42 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+       
+    <h1>Accompagnements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for accompagnement in accompagnements %}
+            <tr>
+                <td><a href="{{ path('accompagnement_show', { 'id': accompagnement.id }) }}">{{ accompagnement.id }}</a></td>
+                <td>{{ accompagnement.name }}</td>
+                <td>{{ accompagnement.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('accompagnement_show', { 'id': accompagnement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('accompagnement_edit', { 'id': accompagnement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('accompagnement_new') }}">Create a new accompagnement</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Burgerspecials list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Prix</th>
+                <th>Image</th>
+                <th>Publier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for burgerSpecial in burgerSpecials %}
+            <tr>
+                <td><a href="{{ path('burgerspecial_show', { 'id': burgerSpecial.id }) }}">{{ burgerSpecial.id }}</a></td>
+                <td>{{ burgerSpecial.name }}</td>
+                <td>{{ burgerSpecial.description }}</td>
+                <td>{% if burgerSpecial.dateDebut %}{{ burgerSpecial.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if burgerSpecial.datefin %}{{ burgerSpecial.datefin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ burgerSpecial.prix }}</td>
+                <td>{{ burgerSpecial.image }}</td>
+                <td>{% if burgerSpecial.publier %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('burgerspecial_show', { 'id': burgerSpecial.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('burgerspecial_edit', { 'id': burgerSpecial.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('burgerspecial_new') }}">Create a new burgerSpecial</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block scriptForm %}
+     <script type="text/javascript" src="{{asset('js/backend/burger.js')}}"></script>
+
+{% endblock %}
