@@ -1,31 +1,27 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
   {% block content %}
-    <h1>Accompagnement</h1>
+    <h1>Categorieboisson</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ accompagnement.id }}</td>
+                <td>{{ categorieBoisson.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ accompagnement.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ accompagnement.description }}</td>
+                <th>Nom</th>
+                <td>{{ categorieBoisson.nom }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('accompagnement_index') }}">Back to the list</a>
+            <a href="{{ path('categorieboisson_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('accompagnement_edit', { 'id': accompagnement.id }) }}">Edit</a>
+            <a href="{{ path('categorieboisson_edit', { 'id': categorieBoisson.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,7 @@ class BurgerType extends AbstractType
         
         $builder->add('name',null, array('label'=>'nom','attr'=> array(
                       'placeholder' => 'entrer le nom de votre burger ...')))
-                ->add('description',null, array('attr'=> array(
+                ->add('description', TextType::class, array('attr'=> array(
                       'placeholder' => 'décrivez en quelques lignes votre burger ...')))
                 ->add('ingredient', CollectionType::class, array(
                       'entry_type'   => IngredientType::class,

@@ -1,7 +1,7 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
   {% block content %}
-    <h1>Accompagnement creation</h1>
+    <h1>Categorieboisson creation</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -10,11 +10,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('accompagnement_index') }}">Back to the list</a>
+            <a href="{{ path('categorieboisson_index') }}">Back to the list</a>
         </li>
     </ul>
-{% endblock %}
-
-{% block scriptForm %}
-    <script type="text/javascript" src="{{asset('js/form.js')}}"></script>
 {% endblock %}

@@ -14,7 +14,8 @@ class IngredientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name',null, array(
-            'label' => false,  
+            'label' => false,
+            'attr'=>array('placeholder'=>'Votre ingrédient ...')
         ));
     }
     

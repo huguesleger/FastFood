@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\JoinTable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints\File;
 
+
 /**
  * Burger
  *
@@ -36,6 +37,7 @@ class Burger
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
      */
     private $description;
 
@@ -50,7 +52,10 @@ class Burger
      * @var UploadedFile
      *
      * @ORM\Column(name="thumbnail", type="string", length= 255, nullable=true)
-     * @File(mimeTypes={"image/jpeg","image/png"})
+     * @File(mimeTypes={"image/jpeg","image/png"},
+     *  maxSize = "800k",
+     *  maxSizeMessage = "La taille maximum taille autorisée est (800k).")
+     *
      */
     private $thumbnail;
 
@@ -86,6 +91,9 @@ class Burger
     * @ORM\Column(name="date", type="datetime")
     */
     private $date;
+    
+    
+    
     
     
     

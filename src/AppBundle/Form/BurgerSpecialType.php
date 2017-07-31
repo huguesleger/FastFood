@@ -3,8 +3,9 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,24 +16,26 @@ class BurgerSpecialType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-//        $d = date('yyyy-mm-d');
-        $builder->add('name')
-                ->add('description')
-                 ->add('ingredient', CollectionType::class, array(
-                      'entry_type'   => IngredientType::class,
-                      'allow_add'    => true,
-                      'allow_delete' => true))
+        $date = date('Y-m-d');
+        $builder->add('name',null, array('label'=>'nom','attr'=> array(
+                      'placeholder' => 'entrer le nom de votre burger ...')))
+                ->add('description',null, array('attr'=> array(
+                      'placeholder' => 'décrivez en quelques lignes votre burger ...')))
+                 ->add('ingredient', TextType::class, array('label'=>'ingrédient(s)','attr'=>array('class'=>'tags')))
                 ->add('dateDebut', DateType::class, array(
                     'widget' => 'single_text',
-                     'html5' => false,
-                   'attr'=>array('class'=>'has-feedback-left')))
+                     'html5' => false, 
+                   'attr'=>array('placeholder'=>$date ,'class'=>'has-feedback-left')))
                 ->add('datefin', DateType::class, array(
                     'widget' => 'single_text',
                      'html5' => false,
-                   'attr'=>array('class'=>'has-feedback-left')))
-                ->add('prix')
+                   'attr'=>array('placeholder'=>$date ,'class'=>'has-feedback-left')))
+                ->add('prix', MoneyType::class, array('attr' => array(
+                    'placeholder' => "00.00")))
                 ->add('image')
-                ->add('publier');
+                ->add('publier', null, array ('attr'=> array(
+                    'class' => 'js-switch'
+                    )));
     }
     
     /**

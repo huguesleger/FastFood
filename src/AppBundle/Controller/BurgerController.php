@@ -48,29 +48,31 @@ class BurgerController extends Controller
     public function newAction(Request $request)
     {
         $burger = new Burger();
-        
       
         
         $form = $this->createForm('AppBundle\Form\BurgerType', $burger);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-             $nomDuFichier = md5(uniqid()).".".$burger->getThumbnail()->getClientOriginalExtension();
+            if($burger->getThumbnail(TRUE)){
+            $nomDuFichier = $burger .".". $burger->getThumbnail()->getClientOriginalExtension();
             $burger->getThumbnail()->move('uploads/img', $nomDuFichier);
             $burger->setThumbnail($nomDuFichier);
-            
+            }
             $this->addFlash(
         'confirm',
             'Votre burger est bien créer'
         );
            
-            
-         
+
             $em = $this->getDoctrine()->getManager();
            
             $em->persist($burger);
             $em->flush();
+            
+            
 
             return $this->redirectToRoute('burger_index', array('id' => $burger->getId()));
+            
         }
 
         return $this->render('admin/burger/new.html.twig', array(
@@ -114,6 +116,7 @@ class BurgerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $image = $burger->getThumbnail();
         
+        
         $deleteForm = $this->createDeleteForm($burger);
         $editForm = $this->createForm('AppBundle\Form\BurgerType', $burger);
         $editForm->handleRequest($request);
@@ -132,8 +135,12 @@ class BurgerController extends Controller
             
              if ($imagesNew->getThumbnail() == null) { //on change pas d'images
                 $imagesNew->setThumbnail($image); //On garde celle déja uploader
+                               
+                
             }else{ //sinon on upload a nouveau
-                 $nomDuFichier = md5(uniqid()) . '.' . $imagesNew->getThumbnail()->getClientOriginalExtension();
+              
+                
+                $nomDuFichier = $burger . '.' . $imagesNew->getThumbnail()->getClientOriginalExtension();
                 $imagesNew->getThumbnail()->move('uploads/img', $nomDuFichier);
                 $imagesNew->setThumbnail($nomDuFichier);
             }
@@ -158,9 +165,11 @@ class BurgerController extends Controller
      */
     public function deleteAction(Request $request, Burger $burger)
     {
+        
+       
         $form = $this->createDeleteForm($burger);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             
             $em = $this->getDoctrine()->getManager();
@@ -181,12 +190,15 @@ class BurgerController extends Controller
     private function createDeleteForm(Burger $burger)
     {
         
-       
+      
         
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('burger_delete', array('id' => $burger->getId())))
             ->setMethod('DELETE')
             ->getForm()
+            
+                
+            
         ;
     }
     
@@ -197,7 +209,6 @@ class BurgerController extends Controller
     *@Route("/{id}/delete", name="delete")
     */
     public function deleteBurger($id) {
-       
         $em = $this->getDoctrine()->getManager();
         $burger = $em->find('AppBundle:Burger', $id);
           $this->addFlash(
@@ -211,8 +222,6 @@ class BurgerController extends Controller
     }
     
      
-    
-
 
     
 }

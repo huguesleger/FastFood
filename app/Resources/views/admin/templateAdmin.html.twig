@@ -31,10 +31,20 @@
              
               <ul class="nav side-menu">
                 <li><a href="{{path('admin_index')}}"><i class="fa fa-home"></i> Home</a></li>
-                <li><a href="{{path('categorie_index')}}"><i class="fa fa-edit"></i> Catégories</a></li>
-                <li><a href="{{path('accompagnement_index')}}"><i class="fa fa-edit"></i> Accompagnements</a></li>
-                <li><a href="{{path('burger_index')}}"><i class="fa fa-edit"></i> Burgers</a></li>
-               <li><a href="{{path('burgerspecial_index')}}"><i class="fa fa-edit"></i> Burgers Special</a></li>    
+                 <li><a><i class="fa fa-desktop"></i> Mes Catégories <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                   <li><a href="{{path('categorie_index')}}"><i class="fa fa-edit"></i> Burgers</a></li>
+                   <li><a href="{{path('categorieboisson_index')}}"><i class="fa fa-edit"></i> Boissons</a></li>
+                  </ul>
+                </li>
+                 <li><a><i class="fa fa-desktop"></i> Ma Carte <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="{{path('burger_index')}}"><i class="fa fa-edit"></i>Mes Burgers</a></li>
+                    <li><a href="{{path('accompagnement_index')}}"><i class="fa fa-edit"></i>Mes Accompagnements</a></li>
+                    <li><a href="{{path('burgerspecial_index')}}"><i class="fa fa-edit"></i> Mes Burgers du moment </a></li>
+                    <li><a href="{{path('boisson_index')}}"><i class="fa fa-edit"></i> Mes Boissons </a></li>
+                  </ul>
+                </li>
               </ul>
             </div>
            

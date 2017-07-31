@@ -1,0 +1,43 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Boissons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Quantite</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for boisson in boissons %}
+            <tr>
+                <td><a href="{{ path('boisson_show', { 'id': boisson.id }) }}">{{ boisson.id }}</a></td>
+                <td>{{ boisson.nom }}</td>
+                <td>{{ boisson.quantite }}</td>
+                <td>{{ boisson.prix }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('boisson_show', { 'id': boisson.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('boisson_edit', { 'id': boisson.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('boisson_new') }}">Create a new boisson</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Categorieboissons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorieBoisson in categorieBoissons %}
+            <tr>
+                <td><a href="{{ path('categorieboisson_show', { 'id': categorieBoisson.id }) }}">{{ categorieBoisson.id }}</a></td>
+                <td>{{ categorieBoisson.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorieboisson_show', { 'id': categorieBoisson.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorieboisson_edit', { 'id': categorieBoisson.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorieboisson_new') }}">Create a new categorieBoisson</a>
+        </li>
+    </ul>
+{% endblock %}
