@@ -40,5 +40,33 @@ $(function() {
 ///////////////////////////////////////
 ///////////////////////////////////////
 
+//
+// function calculeLongueur(){
+//   var iLongueur, iLongueurRestante;
+//   iLongueur = document.getElementById('#appbundle_burger_description').value.length;
+//   if (iLongueur>250) {
+//      document.getElementById('#appbundle_burger_description').value = document.getElementById('#appbundle_burger_description').value.substring(0,250);
+//      iLongueurRestante = 0;
+//   }
+//   else {
+//      iLongueurRestante = 250 - iLongueur;
+//   }
+//   if (iLongueurRestante <= 1)
+//      document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;re&nbsp;disponible";
+//   else
+//      document.getElementById('indic').innerHTML = iLongueurRestante + "&nbsp;caract&egrave;res&nbsp;disponibles";
+//}
+//
+// $('body').load(calculeLongueur());
+ 
+ 
+ 
+$(function(){
+   $('<div id="caracteres">250 caracatère(s) disponible(s)</div>').insertAfter('#appbundle_burger_description'); 
+});
+
+
 
 });
+
+  

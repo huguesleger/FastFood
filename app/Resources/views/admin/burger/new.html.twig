@@ -4,9 +4,10 @@
     <h3>Burger creation</h3>
     {{ form_start(form) }}
      {{ form_errors(form) }}
-        {{ form_widget(form) }}
+      {{ form_widget(form) }}
         
-        
+ 
+          
 
         <input type="submit" value="Create"/>
          <div class="col-sm-10">
@@ -44,4 +45,14 @@
     <script type="text/javascript" src="{{asset('js/backend/form/form_datepicker.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/backend/form/form_ingredient_burger.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/backend/form/form_preload_img.js')}}"></script>
+      <script type="text/javascript">
+        function reste(texte)
+{
+    var restants=250-texte.length;
+    document.getElementById('caracteres').innerHTML=restants + "&nbsp;caractère(s)&nbsp;disponible(s)";
+    if(restants === 0){
+      document.getElementById('caracteres').innerHTML=restants + "&nbsp;caractère(s)&nbsp;disponible(s)";  
+    }
+}
+</script>     
 {% endblock %}

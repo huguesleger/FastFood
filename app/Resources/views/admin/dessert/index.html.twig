@@ -1,0 +1,43 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Desserts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Produitmaison</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dessert in desserts %}
+            <tr>
+                <td><a href="{{ path('dessert_show', { 'id': dessert.id }) }}">{{ dessert.id }}</a></td>
+                <td>{{ dessert.nom }}</td>
+                <td>{% if dessert.produitMaison %}Yes{% else %}No{% endif %}</td>
+                <td>{{ dessert.prix }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dessert_show', { 'id': dessert.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dessert_edit', { 'id': dessert.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dessert_new') }}">Create a new dessert</a>
+        </li>
+    </ul>
+{% endblock %}

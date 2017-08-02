@@ -5,12 +5,15 @@ namespace AppBundle\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * BurgerSpecial
  *
  * @ORM\Table(name="burger_special")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BurgerSpecialRepository")
+ * @UniqueEntity("name", message="Ce nom existe déjà.")
  */
 class BurgerSpecial
 {
@@ -26,7 +29,8 @@ class BurgerSpecial
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $name;
 

@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 
 /**
@@ -14,6 +17,7 @@ use Symfony\Component\Validator\Constraints\File;
  *
  * @ORM\Table(name="burger")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BurgerRepository")
+ * @UniqueEntity("name", message="Ce nom existe déjà.")
  */
 class Burger
 {
@@ -29,7 +33,8 @@ class Burger
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -37,6 +42,11 @@ class Burger
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 250,
+     *      minMessage = "le texte doit avoir minimum {{ limit }} caratères"
+     * ) 
      *
      */
     private $description;
@@ -54,7 +64,7 @@ class Burger
      * @ORM\Column(name="thumbnail", type="string", length= 255, nullable=true)
      * @File(mimeTypes={"image/jpeg","image/png"},
      *  maxSize = "800k",
-     *  maxSizeMessage = "La taille maximum taille autorisée est (800k).")
+     *  maxSizeMessage = "La taille maximum autorisée est (800ko).")
      *
      */
     private $thumbnail;

@@ -1,0 +1,40 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Dessert</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dessert.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ dessert.nom }}</td>
+            </tr>
+            <tr>
+                <th>Produitmaison</th>
+                <td>{% if dessert.produitMaison %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ dessert.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dessert_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('dessert_edit', { 'id': dessert.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

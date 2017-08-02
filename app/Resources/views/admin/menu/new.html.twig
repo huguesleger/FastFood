@@ -1,0 +1,22 @@
+{% extends ':admin:templateAdmin.html.twig' %}
+
+  {% block content %}
+    <h1>Menu creation</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+   
+  <p id="Choix"></p>
+  
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('menu_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block scriptForm %}
+    <script type="text/javascript" src="{{asset('js/backend/form/menu.js')}}"></script>
+{% endblock %}
