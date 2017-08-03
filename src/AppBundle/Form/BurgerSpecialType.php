@@ -17,10 +17,14 @@ class BurgerSpecialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $date = date('Y-m-d');
+     
+       
         $builder->add('name',null, array('label'=>'nom','attr'=> array(
                       'placeholder' => 'entrer le nom de votre burger ...')))
                 ->add('description',null, array('attr'=> array(
-                      'placeholder' => 'décrivez en quelques lignes votre burger ...')))
+                      'placeholder' => 'décrivez en quelques lignes votre burger ...',
+                      'rows'=>3,
+                      'onkeyup'=>'reste(this.value);')))
                  ->add('ingredient', TextType::class, array('label'=>'ingrédient(s)','attr'=>array('class'=>'tags')))
                 ->add('dateDebut', DateType::class, array(
                     'widget' => 'single_text',
@@ -30,7 +34,8 @@ class BurgerSpecialType extends AbstractType
                     'widget' => 'single_text',
                      'html5' => false,
                    'attr'=>array('placeholder'=>$date ,'class'=>'has-feedback-left')))
-                ->add('prix', MoneyType::class, array('attr' => array(
+                ->add('prix', MoneyType::class, array('invalid_message' => 'La valeur n\'est pas un chiffre.',
+                    'attr' => array(
                     'placeholder' => "00.00")))
                 ->add('image')
                 ->add('publier', null, array ('attr'=> array(

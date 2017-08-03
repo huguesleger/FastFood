@@ -65,6 +65,10 @@ $(function(){
    $('<div id="caracteres">250 caracatère(s) disponible(s)</div>').insertAfter('#appbundle_burger_description'); 
 });
 
+$(function(){
+   $('<div id="caracteres">250 caracatère(s) disponible(s)</div>').insertAfter('#appbundle_burgerspecial_description'); 
+});
+
 
 
 });

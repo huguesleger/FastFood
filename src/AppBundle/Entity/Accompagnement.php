@@ -31,6 +31,16 @@ class Accompagnement
      * @Assert\NotBlank()
      */
     private $name;
+    
+    
+    
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity = "Icon")
+     * @ORM\JoinColumn(name = "fk_icon", referencedColumnName = "id")
+     */
+    private $icon;
 
    
     
@@ -59,7 +69,10 @@ class Accompagnement
 
         return $this;
     }
-
+    
+    
+   
+    
     /**
      * Get name
      *
@@ -68,6 +81,32 @@ class Accompagnement
     public function getName()
     {
         return $this->name;
+    }
+    
+    
+     /**
+     * Get icon
+     *
+     * @return string
+     */
+    public function getIcon() {
+        return $this->icon;
+    }
+    
+    
+     /**
+     * Set icon
+     *
+     * @param string $icon
+     *
+     * @return Accompagnement
+     */
+    public function setIcon($icon) {
+        $this->icon = $icon;
+    }
+
+       public function __toString() {
+        return $this->getIcon();
     }
     
 }

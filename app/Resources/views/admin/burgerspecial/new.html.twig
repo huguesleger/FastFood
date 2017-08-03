@@ -38,4 +38,11 @@
     <script type="text/javascript" src="{{asset('js/backend/form/form_datepicker.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/backend/form/form_ingredient_burger_special.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/backend/form/form_preload_img.js')}}"></script>
+        <script type="text/javascript">
+        function reste(texte)
+{
+    var restants=250-texte.length;
+    document.getElementById('caracteres').innerHTML=restants + "&nbsp;caractère(s)&nbsp;disponible(s)";
+}
+</script>  
 {% endblock %}

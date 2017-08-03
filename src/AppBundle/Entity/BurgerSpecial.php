@@ -38,6 +38,11 @@ class BurgerSpecial
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 250,
+     *      minMessage = "le texte doit avoir minimum {{ limit }} caratères"
+     * ) 
      */
     private $description;
 

@@ -73,7 +73,7 @@ $(document).ready(function(){
         width: 'auto',
         defaultText: 'ajouter un ingrédient'
       });
-      $('#appbundle_burgerspecial_ingredient_tagsinput').after('<p class="ingredient-info red">*séparer vos ingrédients par une virgule</p>');
+      $('#appbundle_burgerspecial_ingredient_tagsinput').after('<p class="ingredient-info green">*appuyer sur entrée après chaque ingrédient</p>');
     });
     
     });

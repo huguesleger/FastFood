@@ -19,7 +19,7 @@
             <tr>
                 <td><a href="{{ path('menu_show', { 'id': menu.id }) }}">{{ menu.id }}</a></td>
                 <td>{{ menu.name }}</td>
-                <td>{{ menu.choix }}</td>
+                <td><span class="burger_choice">burger au choix + </span>{{ menu.choix }}</td>
                 <td>{{ menu.prix }}</td>
                 <td>
                     <ul>

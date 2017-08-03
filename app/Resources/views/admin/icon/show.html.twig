@@ -1,27 +1,29 @@
 {% extends ':admin:templateAdmin.html.twig' %}
 
   {% block content %}
-    <h1>Accompagnement</h1>
+    <h1>Icon</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ accompagnement.id }}</td>
+                <td>{{ icon.id }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ accompagnement.name }}</td>
+                <th>Nom</th>
+                <td>{{ icon.nom }}</td>
+            </tr>
+            <tr>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('accompagnement_index') }}">Back to the list</a>
+            <a href="{{ path('icon_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('accompagnement_edit', { 'id': accompagnement.id }) }}">Edit</a>
+            <a href="{{ path('icon_edit', { 'id': icon.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

@@ -9,7 +9,6 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Description</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('accompagnement_show', { 'id': accompagnement.id }) }}">{{ accompagnement.id }}</a></td>
                 <td>{{ accompagnement.name }}</td>
-                <td>{{ accompagnement.description }}</td>
+                <td>{{ accompagnement.icon }}</td>
                 <td>
                     <ul>
                         <li>
@@ -30,6 +29,7 @@
                     </ul>
                 </td>
             </tr>
+
         {% endfor %}
         </tbody>
     </table>

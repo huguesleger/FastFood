@@ -3,17 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * CategorieBoisson
+ * Icon
  *
- * @ORM\Table(name="categorie_boisson")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategorieBoissonRepository")
- * @UniqueEntity("nom", message="Cette catégorie existe déjà.")
+ * @ORM\Table(name="icon")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\IconRepository")
  */
-class CategorieBoisson
+class Icon
 {
     /**
      * @var int
@@ -27,11 +24,11 @@ class CategorieBoisson
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
+ 
 
     /**
      * Get id
@@ -48,7 +45,7 @@ class CategorieBoisson
      *
      * @param string $nom
      *
-     * @return CategorieBoisson
+     * @return Icon
      */
     public function setNom($nom)
     {
@@ -65,6 +62,10 @@ class CategorieBoisson
     public function getNom()
     {
         return $this->nom;
+    }
+
+   public function __toString() {
+        return $this->getNom();
     }
 }
 
