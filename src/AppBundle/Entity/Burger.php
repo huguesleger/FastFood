@@ -55,6 +55,10 @@ class Burger
      * @var string
      *
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
+     * @Assert\Range(
+     *      max = 20,
+     *      maxMessage = "Plus de {{ limit }}€ pour un burger, sa fait cher non ?"
+     * )
      */
     private $price;
 

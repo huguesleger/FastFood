@@ -97,6 +97,7 @@
                         <th style="width: 12%">Categorie</th>
                         <th style="width: 20%">Nom</th>
                         <th>Description</th>
+                        <th>Tarif</th>
                         <th>Status</th>
                         <th style="width: 20%">Actions</th>
                       </tr>
@@ -107,8 +108,9 @@
                         {% for burger in burgers %}
                       <tr>  
                         <td> {% set counter = ( counter | default(0) ) + 1 %}
-                            <div id="count-burger"><small> {{ counter }}</div></td>
-                        <td> <ul class="list-inline">
+                            <div id="count-burger"><small> {{ counter }}</small></div></td>
+                        <td>
+                            <ul class="list-inline">
                             <li>
                               {% if burger.categorie == 'burger steak' %}<img src="{{asset('image/food/steak.png')}}" class="avatar" alt="Avatar">
                               {% elseif burger.categorie == 'burger chicken'%}<img src="{{asset('image/food/chicken-1.png')}}" class="avatar" alt="Avatar">
@@ -123,6 +125,7 @@
                           <br />
                           <small>Créer le {{ burger.date|date ('j/m/y à H:i:s') }}</small></td>
                         <td>{{ burger.description }}</td>
+                         <td>{{ burger.price }} €</td>
                         <td> {% if burger.publish %}<span type="button" class="label label-success">En ligne</span>{% else %}<span class="label label-warning">Brouillon</span>{% endif %}</td>
                         <td><a href="{{ path('burger_show', { 'id': burger.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                           <a href="{{ path('burger_edit', { 'id': burger.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>

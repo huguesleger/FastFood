@@ -2,7 +2,7 @@
 
   {% block content %}
        
-    <h1>Accompagnements list</h1>
+{#    <h1>Accompagnements list</h1>
 
     <table>
         <thead>
@@ -38,5 +38,78 @@
         <li>
             <a href="{{ path('accompagnement_new') }}">Create a new accompagnement</a>
         </li>
-    </ul>
+    </ul>#}
+
+
+    
+        
+        
+      
+       <div class="">
+          <div class="page-title">
+            <div class="title_left">
+                <h3>Accompagnement<a class="btn btn-dark btn-xs title_add" href="{{ path('burger_new') }}">Ajouter</a></h3>       
+            </div>
+
+          
+          </div>
+          <div class="clearfix"></div>
+
+
+          
+                <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Mes Accompagnements</h2>
+                  
+                  <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                 
+                  <table id="datatable" class="table table-striped projects">
+                    <thead>
+                      <tr>
+                        <th style="width: 1%">#</th>
+                        <th style="width: 12%">Icon</th>
+                        <th style="width: 20%">Nom</th>
+                        <th style="width: 20%">Actions</th>
+                      </tr>
+                    </thead>
+
+
+                    <tbody>
+                        {% for accompagnement in accompagnements %}
+                      <tr>  
+                        <td> {% set counter = ( counter | default(0) ) + 1 %}
+                            <div id="count-burger"><small> {{ counter }}</div></td>
+                       
+                        <td>
+                            <ul class="list-inline">
+                            <li>
+                           {% if accompagnement.icon == true %}<img src="{{asset('image/food/'~accompagnement.icon~'.png')}}" class="avatar" alt="Avatar">
+                           {% elseif accompagnement.icon == null %}<img src="{{asset('image/food/question.png')}}" class="avatar" alt="Avatar">
+                           {% endif %} 
+                            </li>
+                            </ul>
+                        </td>
+                        <td><a>{{ accompagnement.name }}</a></td>
+                        <td><a href="{{ path('accompagnement_show', { 'id': accompagnement.id }) }}" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                          <a href="{{ path('accompagnement_edit', { 'id': accompagnement.id }) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                          <a href="{{ path('accompagnement_delete', { 'id': accompagnement.id }) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        </td>
+                      </tr>
+                       {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+                </div>
+                    
+                   </div>    
+
+
 {% endblock %}

@@ -9,7 +9,7 @@ body.nav-sm .container.body .right_col {
   padding: 10px 20px;
   margin-left: 70px;
   z-index: 2;
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 body.nav-sm .navbar.nav_title {
   width: 70px;
@@ -312,7 +312,7 @@ body {
   display: block;
   padding: 10px 20px 0;
   margin-left: 230px;
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .main_container {}
 .no-padding {
@@ -578,7 +578,7 @@ li.current-page a {
   height: 55px;
   margin: 0;
   padding-left: 10px;
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .site_title:hover, .site_title:focus {
   text-decoration: none

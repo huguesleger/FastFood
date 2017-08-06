@@ -53,7 +53,7 @@ $(function () {
     var url = window.location;
     $('#sidebar-menu a[href="' + url + '"]').parent('li').addClass('current-page');
     $('#sidebar-menu a').filter(function () {
-        return this.href == url;
+        return this.href === url;
     }).parent('li').addClass('current-page').parent('ul').slideDown().parent().addClass('active');
 });
 
@@ -69,8 +69,8 @@ $(window).resize(function () {
 
 /** ******  tooltip  *********************** **/
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-})
+    $('[data-toggle="tooltip"]').tooltip();
+});
 /** ******  /tooltip  *********************** **/
 /** ******  progressbar  *********************** **/
 if ($(".progress .progress-bar")[0]) {
@@ -142,7 +142,7 @@ var __slice = [].slice;
             _ref = this.defaults;
             for (i in _ref) {
                 _ = _ref[i];
-                if (this.$el.data(i) != null) {
+                if (this.$el.data(i) !== null) {
                     this.options[i] = this.$el.data(i);
                 }
             }
@@ -271,10 +271,10 @@ $('.bulk_action input#check-all').on('ifUnchecked', function () {
 });
 
 function countChecked() {
-    if (check_state == 'check_all') {
+    if (check_state === 'check_all') {
         $(".bulk_action input[name='table_records']").iCheck('check');
     }
-    if (check_state == 'uncheck_all') {
+    if (check_state === 'uncheck_all') {
         $(".bulk_action input[name='table_records']").iCheck('uncheck');
     }
     var n = $(".bulk_action input[name='table_records']:checked").length;
@@ -301,7 +301,7 @@ $(function () {
         $(this).next().slideToggle(200);
         $expand = $(this).find(">:first-child");
 
-        if ($expand.text() == "+") {
+        if ($expand.text() === "+") {
             $expand.text("-");
         } else {
             $expand.text("+");
@@ -323,7 +323,7 @@ $(document).ready(function () {
 /** ******  /scrollview  *********************** **/
 
 /** ******  NProgress  *********************** **/
-if (typeof NProgress != 'undefined') {
+if (typeof NProgress !== 'undefined') {
     $(document).ready(function () {
         NProgress.start();
     });
