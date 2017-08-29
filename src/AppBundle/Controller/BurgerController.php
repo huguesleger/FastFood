@@ -28,11 +28,21 @@ class BurgerController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $burgers = $em->getRepository('AppBundle:Burger')->findAll();
-       
+        $locationRepo = $em->getRepository('AppBundle:Burger');
+        
+        //count number project not publish
+        $count = $locationRepo->getNb();
+        
+          $this->addFlash(
+        'countPublish',
+            ' burgers sont encore en brouillons C\'est peut être le moment de publier :)' 
+        );
+        
         
         
         return $this->render('admin/burger/index.html.twig', array(
             'burgers' => $burgers,
+            'count' => $count,
             new JsonResponse($burgers)
         ));
          
@@ -63,16 +73,11 @@ class BurgerController extends Controller
             'Votre burger est bien créer'
         );
            
-
             $em = $this->getDoctrine()->getManager();
-           
             $em->persist($burger);
             $em->flush();
             
-            
-
-            return $this->redirectToRoute('burger_index', array('id' => $burger->getId()));
-            
+            return $this->redirectToRoute('burger_index', array('id' => $burger->getId()));   
         }
 
         return $this->render('admin/burger/new.html.twig', array(
@@ -222,6 +227,8 @@ class BurgerController extends Controller
     }
     
      
+ 
+
 
     
 }

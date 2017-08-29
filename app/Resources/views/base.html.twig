@@ -3,15 +3,28 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
          <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap.min.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('css/news_css/main.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('vendor/font-awesome.min.css')}}"/>
+         <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate.css')}}"/>
+        
+         {% stylesheets output="css/compiled/main.css"
+
+        
+
+            'css/news_css/main.css'
+         filter='cssrewrite' %}
+         <link rel="stylesheet" href="{{ asset_url }}" />
+         {% endstylesheets %}
+         {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
         <script type="text/javascript" src="{{asset('vendor/jquery.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('vendor/dynamics.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/frontend/main.js')}}"></script>
         {% endblock %}
         {% block scriptForm %}{% endblock %}
     </body>

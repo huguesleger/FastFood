@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+ {% block stylesheets %}
+     
+      {{ parent() }}
+        
+         {% stylesheets output="css/compiled/main.css"
+
+        
+        
+         filter='cssrewrite' %}
+         <link rel="stylesheet" href="{{ asset_url }}" />
+         {% endstylesheets %}
+         {% endblock %}
+
+  {% block body %}
+
+
+<div id="Header">
+    <div id="section">
+        <div class="bg-header">
+             <div class="">
+   <svg id="Vague" class="vague" width="100%" height="100%"  viewBox="0 0 1922 890.00001" preserveAspectRatio="none">
+            <path  d="m -8.2686391,1054.4052 1939.3634391,1.1905 1.4269,-889.34454 c 0,0 -386.2545,83.35612 -870.7487,-5.51147 C 499.75133,55.742024 -7.555141,163.8702 -7.555141,163.8702 Z"
+                  data-to="m -8.2686391,1054.4052 1939.3634391,1.1905 0.2364,-940.53502 c 0,0 -348.1592,-2.35816 -860.0344,-3.13051 C 529.51323,110.50393 -6.3646648,111.48925 -6.3646648,111.48925 Z"/>
+</svg>
+    </div>
+            <img src="{{asset('image/burger-home.jpg')}}" alt="..." class="img-responsive">
+                <div id="Enter" class="enter">
+                 <div class="anim-home">
+                <div class="anim-home btn btn-primary">salut</div>
+                 </div>
+                </div>
+        </div>
+
+</div> 
+        
+   
+  </div>
+         <section class="present">
+             <p>hello</p>
+                        
+        </section>
+
+
+   {% endblock %}
+   
+    {% block javascripts %}
+         {{ parent() }}
+         {% endblock %}

@@ -11,5 +11,20 @@ namespace AppBundle\Repository;
 class BurgerRepository extends \Doctrine\ORM\EntityRepository
 {
     
+    public function getNb() {
+  
+        return $this->createQueryBuilder('l')
+  
+                        ->select('COUNT(l)')
+                        	
+                        ->where('l.publish = :publish')
+                        
+                        ->setParameter('publish', 0)
+  
+                        ->getQuery()
+  
+                        ->getSingleScalarResult();
+  
+    }
     
 }

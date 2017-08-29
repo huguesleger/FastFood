@@ -56,12 +56,43 @@
       </div>
      </div>
      {% endfor %}
-        
+     
+    
       
        <div class="">
+           
+           
+           
           <div class="page-title">
+              <div class="row">
+              <div class="col-md-12">
+                               {% block count %}
+                                {%if count > 6 %}
+          {% for message in app.flashes('countPublish') %}
+         <div id="countPublish">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                  </button>
+                  <div class="ui-pnotify-icon">
+                 <span class="fa fa-exclamation-triangle"></span>
+             </div>
+             <h4 class="ui-pnotify-title">Infos</h4>
+             <div class="ui-pnotify-text"><span class="badge badge-success">{{ count }}</span> {{ message }}</div>   
+                </div>
+         </div>
+             
+{% endfor %}
+       {% endif %}
+      {% endblock %} 
+              </div>
+              </div>
+              
+              
             <div class="title_left">
-                <h3>Burger<a class="btn btn-dark btn-xs title_add" href="{{ path('burger_new') }}">Ajouter</a></h3>       
+ 
+      
+                <h3>Burger<a class="btn btn-dark btn-xs title_add" href="{{ path('burger_new') }}">Ajouter</a></h3> 
+               
             </div>
 
             {#<div class="title_right">
@@ -77,7 +108,7 @@
           </div>
           <div class="clearfix"></div>
 
-
+ 
           
                 <div class="row">
 
@@ -106,6 +137,8 @@
 
                     <tbody>
                         {% for burger in burgers %}
+                            
+                             {#<h4>{{ nb }}</h4>#}
                       <tr>  
                         <td> {% set counter = ( counter | default(0) ) + 1 %}
                             <div id="count-burger"><small> {{ counter }}</small></div></td>

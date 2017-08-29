@@ -11,9 +11,12 @@ $(document).ready(function(){
     
 $(function(){
 //$('#no_publish').fadeIn('slow').delay(2000).fadeOut('slow');
-$('#confirm').fadeIn('slow').delay(2000).fadeOut('slow');
-$('#delete').fadeIn('slow').delay(2000).fadeOut('slow');
+$('#confirm').fadeIn('slow').delay(2500).fadeOut('slow');
+$('#delete').fadeIn('slow').delay(2500).fadeOut('slow');
 $('#maj_post').fadeIn('slow').delay(3500).fadeOut('slow');
+//$('#countPublish').fadeIn('slow').delay(9000).fadeOut('slow');
+
+
 });
 
 ///////////////////////////////////////
